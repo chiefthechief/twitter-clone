@@ -1,11 +1,11 @@
+import dotenv from "dotenv"
+dotenv.config()
 import express from "express"
 import cors from "cors"
-import dotenv from "dotenv"
 import pool from "../db/index.js"
 import userRoutes from "../routes/userRoutes.js"
 import tweetRoutes from "../routes/tweetRoutes.js"
 
-dotenv.config()
 
 const app = express()
 

@@ -1,7 +1,7 @@
 import { Pool } from "pg"
 import dotenv from "dotenv"
-
 dotenv.config()
+
 
 
 // Initialize the Pool with the database connection string from environment variables
@@ -12,7 +12,7 @@ const pool = new Pool({
     },
 })
 
-// // Define the schema SQL directly as a string
+// Define the schema SQL directly as a string
 // const schemaSQL = `
 //     DROP TABLE IF EXISTS users, tweets, likes, follows, comments CASCADE;
 
