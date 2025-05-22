@@ -5,12 +5,13 @@ export const createTweet = async (req, res) => {
     const { user_id, content, image_url } = req.body
     try {
         const id = generateRandomNumber(10)
-        const userResult = await pool.query("select * from users where id = $1", [user_id])
+        console.log(req.body)
+        const userResult = await pool.query(`select * from users where id = $1`, [user_id])
         if(userResult.rows.length === 0) {
             return res.status(404).json({ error: "user not found" })
         }
         const result = await pool.query(
-            "insert into tweets (id, user_id, content, image_url) values ($1, $@, $3, $4) returning *",
+            `insert into tweets (id, user_id, content, image_url) values ($1, $2, $3, $4) returning *`,
             [id, user_id, content, image_url]
         )
         res.status(201).json(result.rows[0])
@@ -47,7 +48,7 @@ export const getTweetById = async (req, res) => {
 export const deleteTweet = async (req, res) => {
     const { id } = req.params
     try {
-        const result = await pool.query("delete from tweets where id = $1 returning *", [id])
+        const result = await pool.query(`delete from tweets where id = $1 returning *`, [id])
         if (result.rows.length === 0) {
             return res.status(404).json({ error: "tweet not found" })
         }

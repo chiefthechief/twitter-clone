@@ -20,11 +20,22 @@ app.get("/", (req, res) => {
 
 app.get("/testdb", async (req, res) => {
     try {
-        const result = await pool.query("SELECT NOW()")
-        res.json(result.rows[0])
+        const usersResult = await pool.query("SELECT * FROM users")
+        const tweetsResult = await pool.query("SELECT * FROM tweets")
+        const likesResult = await pool.query("SELECT * FROM likes")
+        const commentsResult = await pool.query("SELECT * FROM comments")
+        const followsResult = await pool.query("SELECT * FROM follows")
+
+        res.json({
+            users: usersResult.rows,
+            tweets: tweetsResult.rows,
+            likes: likesResult.rows,
+            comments: commentsResult.rows,
+            follows: followsResult.rows
+        })
     } catch (err) {
         console.error(err)
-        res.status(500).json({ error: "Database connection failed" })
+        res.status(500).json({ error: "Failed to fetch data from database" })
     }
 })
 

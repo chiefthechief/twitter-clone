@@ -12,12 +12,12 @@ const pool = new Pool({
     },
 })
 
-// Define the schema SQL directly as a string
+// // Define the schema SQL directly as a string
 // const schemaSQL = `
 //     DROP TABLE IF EXISTS users, tweets, likes, follows, comments CASCADE;
 
 //   CREATE TABLE IF NOT EXISTS users (
-//     id serial PRIMARY KEY,
+//     id varchar(100) PRIMARY KEY,
 //     username VARCHAR(50) NOT NULL UNIQUE,
 //     email VARCHAR(100) NOT NULL UNIQUE,
 //     password_hash VARCHAR(255) NOT NULL,
@@ -27,31 +27,31 @@ const pool = new Pool({
 //   );
 
 //   CREATE TABLE IF NOT EXISTS tweets (
-//     id serial PRIMARY KEY,
-//     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+//     id varchar(100) PRIMARY KEY,
+//     user_id varchar(100) REFERENCES users(id) ON DELETE CASCADE,
 //     content TEXT NOT NULL,
 //     image_url TEXT,
 //     created_at TIMESTAMP DEFAULT current_timestamp
 //   );
 
 //   CREATE TABLE IF NOT EXISTS likes (
-//     id serial PRIMARY KEY,
-//     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-//     tweet_id INTEGER REFERENCES tweets(id) ON DELETE CASCADE,
+//     id varchar(100) PRIMARY KEY,
+//     user_id varchar(100) REFERENCES users(id) ON DELETE CASCADE,
+//     tweet_id varchar(100) REFERENCES tweets(id) ON DELETE CASCADE,
 //     created_at TIMESTAMP DEFAULT current_timestamp
 //   );
 
 //   CREATE TABLE IF NOT EXISTS follows (
-//     id serial PRIMARY KEY,
-//     follower_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-//     followed_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+//     id varchar(100) PRIMARY KEY,
+//     follower_id varchar(100) REFERENCES users(id) ON DELETE CASCADE,
+//     followed_id varchar(100) REFERENCES users(id) ON DELETE CASCADE,
 //     created_at TIMESTAMP DEFAULT current_timestamp
 //   );
 
 //   CREATE TABLE IF NOT EXISTS comments (
-//     id serial PRIMARY KEY,
-//     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-//     tweet_id INTEGER REFERENCES tweets(id) ON DELETE CASCADE,
+//     id varchar(100) PRIMARY KEY,
+//     user_id varchar(100) REFERENCES users(id) ON DELETE CASCADE,
+//     tweet_id varchar(100) REFERENCES tweets(id) ON DELETE CASCADE,
 //     content TEXT NOT NULL,
 //     created_at TIMESTAMP DEFAULT current_timestamp
 //   );
