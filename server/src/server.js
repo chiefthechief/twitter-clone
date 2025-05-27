@@ -6,6 +6,7 @@ import pool from "../db/index.js"
 import userRoutes from "../routes/userRoutes.js"
 import tweetRoutes from "../routes/tweetRoutes.js"
 import followRoutes from "../routes/followRoutes.js"
+import commentRoutes from "../routes/commentRoutes.js"
 
 
 const app = express()
@@ -15,7 +16,7 @@ app.use(express.json())
 app.use("/users", userRoutes)
 app.use("/tweets", tweetRoutes)
 app.use("/follows", followRoutes)
-
+app.use("/comments", commentRoutes)
 
 app.get("/", (req, res) => {
     res.send("twitter clone api running")
